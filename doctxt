@@ -1,0 +1,82 @@
+https://python-vlc.readthedocs.io/en/latest/
+https://github.com/iptv-org/iptv
+https://streamurl.link/
+https://garfnet.org.uk/cms/tables/radio-frequencies/internet-radio-player/
+
+
+ModernRadioPlayer Documentation
+Overview
+The ModernRadioPlayer class is a custom radio player built using the customtkinter (CTk) library, requests, and vlc for media handling. This radio player allows users to select from various radio stations and control the audio playback. The interface is highly customizable, featuring buttons, progress bars, and a volume slider. The application uses a background image and supports drag functionality for moving the window.
+
+Imports
+    customtkinter as ctk: A library to create modern-looking Tkinter applications.
+    requests: A simple HTTP library to handle streaming requests.
+    vlc: A multimedia player library to handle audio streaming.
+    PIL.Image, PIL.ImageTk: Used for loading and manipulating images, such as the window background image.
+    Class: ModernRadioPlayer
+    __init__(self)
+The constructor sets up the window properties and initializes key components:
+
+    Window title and geometry.
+    Background image set and resized for the window.
+    Color themes for buttons and progress bars.
+    Initializes variables for media player state (is_playing, volume, etc.).
+    Calls create_widgets() to generate the UI components.
+    create_widgets(self)
+Creates and places all the essential UI elements in the window:
+
+    Main Frame: Container for the main content.
+    Volume Frame: Contains the vertical slider to control the volume.
+    Stations Frame: Holds buttons for each radio station.
+    Control Frame: Houses the play/pause button, status label, progress bar, and exit button.
+    load_stations(self)
+    Populates the stations list and creates buttons for each radio station. Each button is linked to the select_station method, allowing users to select a station.
+
+select_station(self, url, name)
+Sets the current_station to the selected station and updates the status label. The selected station's button is highlighted, and other buttons are reset to their default colors.
+
+toggle_play(self)
+Toggles between playing and pausing the current station:
+
+    If no station is selected, it prompts the user to select one.
+    If playing, it starts the radio stream using the start_radio() method.
+    If paused, it stops the radio stream using the stop_radio() method.
+    set_volume(self, value)
+    Adjusts the volume of the player using the provided slider value. The volume is updated in the vlc player instance.
+
+    start_radio(self)
+    Starts streaming the selected radio station. If no player instance exists, a new one is created. It uses the vlc library to play the audio stream.
+
+    stop_radio(self)
+    Stops the current audio playback and resets the player.
+
+    update_progress(self)
+    Updates the progress bar during playback. The progress bar continuously moves until the playback is stopped.
+
+    start_move(self, event)
+    Initiates dragging by recording the initial mouse position.
+
+    do_move(self, event)
+    Moves the window based on the current mouse position, updating the window's geometry.
+
+    setup_dragging(self)
+    Binds the mouse events to enable dragging the window by clicking and dragging anywhere on the window.
+
+Main Application Flow
+    Initialization: The ModernRadioPlayer instance is created and initialized.
+    Widget Setup: The create_widgets() method is called to set up UI components like buttons, sliders, and the progress bar.
+    Station Selection: Users can select a station, which updates the UI and starts the audio stream when the play button is pressed.
+    Playback Control: The user can play, pause, and adjust the volume of the selected radio station.
+    Window Dragging: The user can drag the window by clicking anywhere on the window.
+Key Methods and Functionality
+    Volume Control: A vertical slider allows the user to adjust the volume of the player.
+    Radio Station Selection: Multiple radio stations are listed, and the user can select any station to start playing.
+    Play/Pause: The play button toggles the playback of the selected radio station.
+    Progress Bar: A dynamic progress bar shows the current playtime of the audio stream.
+    Requirements
+customtkinter: Used for modern Tkinter widgets.
+    vlc: Used for handling media streaming.
+    requests: Used for handling streaming requests (though not actively used in the code, this can be used for fetching streaming data).
+    Known Issues
+    If a station is not selected, the user will be prompted to select one before playing.
+    The program may not handle certain network or stream errors gracefully, especially with non-responsive stations.
