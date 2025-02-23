@@ -13,6 +13,10 @@ A simple Python radio player with a modern UI, allowing users to stream online s
 - **Drag functionality**: Move the window freely on the screen.
 - **Modern UI**: A sleek interface built using `customtkinter` for a smooth user experience.
 
+
+![Alt Text](9l8gwa.gif)
+
+
 ## Requirements
 
 The project requires the following Python libraries:
