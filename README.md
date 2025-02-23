@@ -14,7 +14,7 @@ A simple Python radio player with a modern UI, allowing users to stream online s
 - **Modern UI**: A sleek interface built using `customtkinter` for a smooth user experience.
 
 
-![Alt Text](9l8gwa.gif)
+![UI](9l8gwa.gif)
 
 
 ## Requirements
