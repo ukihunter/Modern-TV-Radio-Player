@@ -1,0 +1,4 @@
+customtkinter==5.2.0
+requests==2.28.2
+python-vlc==3.0.211
+Pillow==9.2.0
